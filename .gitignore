@@ -1,0 +1,16 @@
+# Dependencies
+node_modules
+
+# Editors
+.idea
+*.iml
+
+# OS Metadata
+.DS_Store
+Thumbs.db
+
+# Generated
+app/public/css/maps
+app/public/css/app.css
+app/public/js/app.js
+
