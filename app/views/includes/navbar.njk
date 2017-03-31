@@ -1,0 +1,27 @@
+<div class="row border-bottom white-bg">
+  <nav class="navbar navbar-static-top">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button">
+        <i class="fa fa-reorder"></i>
+      </button>
+      <a class="navbar-brand" href="/dashboard">{{ appName }}</a>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#event">Create Event</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#market">Create Market</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#notification">Create Notification</a></li>
+
+      </ul>
+      <ul class="nav navbar-top-links navbar-right">
+        <li><a href="/auth/logout"><i class="fa fa-sign-out"></i> Log out</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+{% include "./modals/event.njk" %}
+{% include "./modals/market.njk" %}
+{% include "./modals/notification.njk" %}
+

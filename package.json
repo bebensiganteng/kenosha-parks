@@ -15,7 +15,8 @@
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
     "express": "^4.15.2",
-    "pug": "^2.0.0-beta11"
+    "express-nunjucks": "^2.2.3",
+    "nunjucks": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "^3.18.0",
