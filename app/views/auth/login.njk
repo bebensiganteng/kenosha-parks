@@ -1,0 +1,25 @@
+{% extends "../layouts/auth.njk" %}
+
+{% block content %}
+<div class="middle-box text-center loginscreen" style="padding-top: 10%;">
+  {% if messages.error %}
+    <div class="alert alert-danger">
+      <p>{{ messages.error }}</p>
+    </div>
+  {% endif %}
+  <div class="box">
+    <h2>Please Login</h2>
+    <form action="/auth/login" method="POST">
+      <div class="form-group">
+        <input type="email" class="form-control" placeholder="Email" name="email" required>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" name="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+      <a href="/iforgot"><small>Forgot password?</small></a>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

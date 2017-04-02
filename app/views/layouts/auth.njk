@@ -1,0 +1,9 @@
+<!doctype html>
+<html>
+  {% include "../includes/head.njk" %}
+  <body class="gray-bg">
+    {% block content %}{% endblock %}
+    {% include "../includes/scripts.njk" %}
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

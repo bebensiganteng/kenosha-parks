@@ -13,9 +13,15 @@
     "dev": "nodemon app.js"
   },
   "dependencies": {
+    "body-parser": "^1.17.1",
     "bootstrap-sass": "^3.3.7",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
+    "express-flash": "^0.0.2",
     "express-nunjucks": "^2.2.3",
+    "express-session": "^1.15.2",
+    "firebase": "^3.7.4",
+    "firebase-admin": "^4.1.4",
     "nunjucks": "^3.0.0"
   },
   "devDependencies": {
@@ -42,7 +48,8 @@
       "arrow-body-style": [
         "error",
         "always"
-      ]
+      ],
+      "object-property-newline": 0
     }
   }
 }
