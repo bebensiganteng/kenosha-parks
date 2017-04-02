@@ -35,11 +35,7 @@ app.set('port', process.env.PORT || 3000)
 app.set('views', join(__dirname, 'app/views'))
 app.set('view engine', 'njk')
 
-app.locals.defaultTitle = 'Express'
-app.locals.appName = 'Farmers Market'
-app.locals.registrationTypes = ['On-Site', 'Online']
-app.locals.ageGroups = ['Family', 'Public', 'Adults']
-app.locals.parks = ['Lincoln Park', 'Colonial Park', 'Lockwood Park', 'Island Park']
+Object.assign(app.locals, config.locals)
 
 expressNunjucks(app, {
   watch: isDev,
