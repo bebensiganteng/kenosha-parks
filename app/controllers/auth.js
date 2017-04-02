@@ -28,6 +28,14 @@ exports.login = (req, res) => {
     })
 }
 
+exports.logout = (req, res) => {
+  firebase.auth().signOut()
+    .then(() => {
+      req.session.destroy()
+    })
+  res.redirect('/auth/signin')
+}
+
 exports.signin = (req, res) => {
   if (req.session.user) {
     res.redirect('/dashboard')

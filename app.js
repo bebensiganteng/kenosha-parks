@@ -49,7 +49,7 @@ expressNunjucks(app, {
 /**
  * Configure routes; all routes use Express' Router.
  */
-app.get('/', (req, res) => { res.redirect('/dashboard') })
+app.get('/', (req, res) => { res.redirect('/auth/signin') })
 app.use('/auth', routes.auth)
 app.use('/dashboard', isAuthenticated, routes.dashboard)
 app.use('/events', isAuthenticated, routes.events)
