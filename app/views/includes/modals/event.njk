@@ -10,28 +10,46 @@
             <div class="form-group">
               <label for="name" class="col-md-2 control-label">Name</label>
               <div class="col-md-10">
-                <input type="text" class="form-control" id="name" placeholder="Event name">
+                <input type="text" class="form-control" id="name" placeholder="Event name" name="name" required>
               </div>
             </div>
             <div class="form-group">
               <label for="description" class="col-md-2 control-label">Description</label>
               <div class="col-md-10">
-                <textarea class="form-control" id="description" placeholder="Event description"></textarea>
+                <textarea class="form-control" id="description" placeholder="Event description" name="description" required></textarea>
               </div>
             </div>
+
             <div class="form-group">
-              <label for="details" class="col-md-2 control-label">Details</label>
-              <div class="col-md-5">
-                <select name="registration" id="details" class="form-control">
-                  <option selected disabled>Select registration</option>
+              <label for="startDateTime" class="col-md-2 control-label">Start</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" id="startDateTime" placeholder="Start date and time" name="startDateTime" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="endDateTime" class="col-md-2 control-label">End</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" id="endDateTime" placeholder="End date and time" name="endDateTime" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="registration" class="col-md-2 control-label">Registration</label>
+              <div class="col-md-10">
+                <select name="registration" id="registration" class="form-control" name="registration" required>
+                  <option value="" selected disabled>Select registration</option>
                   {% for registrationType in registrationTypes %}
                     <option value="{{registrationType}}">{{ registrationType }}</option>
                   {% endfor %}
                 </select>
               </div>
-              <div class="col-md-5">
-                <select name="ageGroup" id="details" class="form-control">
-                  <option value="" selected disabled>Select age group</option>
+            </div>
+            <div class="form-group">
+              <label for="ageGroup" class="col-md-2 control-label">Age Group</label>
+              <div class="col-md-10">
+                <select name="registration" id="ageGroup" class="form-control" name="ageGroup" required>
+                  <option selected disabled>Select age group</option>
                   {% for ageGroup in ageGroups %}
                     <option value="{{ageGroup}}">{{ ageGroup }}</option>
                   {% endfor %}
@@ -39,60 +57,35 @@
               </div>
             </div>
             <div class="form-group">
-              <div class="col-md-5 col-md-offset-2">
-                <select name="park" id="details" class="form-control">
-                  <option selected disabled>Select Park</option>
-                  <option value="None">None</option>
+              <label for="park" class="col-md-2 control-label">Park</label>
+              <div class="col-md-10">
+                <select name="registration" id="park" class="form-control" name="park" required>
+                  <option selected disabled>Select park</option>
                   {% for park in parks %}
                     <option value="{{park}}">{{ park }}</option>
                   {% endfor %}
-                </select>
-              </div>
-              <div class="col-md-5">
-                <select name="isIndoors" class="form-control">
-                  <option selected disabled>Select indoor/outdoors</option>
-                  <option value="true">Indoors</option>
-                  <option value="false">Outdoors</option>
                 </select>
               </div>
             </div>
             <div class="form-group">
               <label for="address" class="col-md-2 control-label">Address</label>
               <div class="col-md-10">
-                <input type="text" class="form-control" id="address" placeholder="Event address">
+                <input type="text" class="form-control" id="address" placeholder="Event address" name="address" required="">
               </div>
             </div>
             <div class="form-group">
               <label for="organization" class="col-md-2 control-label">Organization</label>
               <div class="col-md-10">
-                <input type="text" class="form-control" id="organization" placeholder="Organization name">
+                <input type="text" class="form-control" id="organization" placeholder="Organization name" name="organization" required="">
               </div>
             </div>
             <div class="form-group">
               <label for="contact" class="col-md-2 control-label">Contact</label>
               <div class="col-md-5">
-                <input type="text" class="form-control" id="contact" placeholder="Primary contact name">
+                <input type="text" class="form-control" id="contact" placeholder="Primary contact name" name="contactName" required="">
               </div>
               <div class="col-md-5">
-                <input type="text" class="form-control" data-mask="(999) 999-9999" id="contact" placeholder="Primary contact phone">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="date" class="col-md-2 control-label">Date</label>
-              <div class="col-md-5">
-                <input type="text" class="form-control start-date" id="date" placeholder="Start date">
-              </div>
-              <div class="col-md-5">
-                <input type="text" class="form-control end-date" id="date" placeholder="Start date">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="time" class="col-md-2 control-label">Time</label>
-              <div class="col-md-5">
-                <input type="text" class="form-control start-time" id="time" placeholder="End time">
-              </div>
-              <div class="col-md-5">
-                <input type="text" class="form-control end-time" id="time" placeholder="End time">
+                <input type="text" class="form-control" data-mask="(999) 999-9999" id="contact" placeholder="Primary contact phone" name="contactNumber" required="">
               </div>
             </div>
           </div>
@@ -108,9 +101,6 @@
 {% block styles %}
 <style>
 .pac-container {
-  z-index: 2051 !important;
-}
-.popover {
   z-index: 2051 !important;
 }
 </style>
