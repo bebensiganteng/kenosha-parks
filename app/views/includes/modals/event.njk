@@ -48,7 +48,7 @@
             <div class="form-group">
               <label for="ageGroup" class="col-md-2 control-label">Age Group</label>
               <div class="col-md-10">
-                <select name="registration" id="ageGroup" class="form-control" name="ageGroup" required>
+                <select name="ageGroup" id="ageGroup" class="form-control" name="ageGroup" required>
                   <option selected disabled>Select age group</option>
                   {% for ageGroup in ageGroups %}
                     <option value="{{ageGroup}}">{{ ageGroup }}</option>
@@ -59,7 +59,7 @@
             <div class="form-group">
               <label for="park" class="col-md-2 control-label">Park</label>
               <div class="col-md-10">
-                <select name="registration" id="park" class="form-control" name="park" required>
+                <select name="park" id="park" class="form-control" name="park" required>
                   <option selected disabled>Select park</option>
                   {% for park in parks %}
                     <option value="{{park}}">{{ park }}</option>
@@ -70,22 +70,32 @@
             <div class="form-group">
               <label for="address" class="col-md-2 control-label">Address</label>
               <div class="col-md-10">
-                <input type="text" class="form-control" id="address" placeholder="Event address" name="address" required="">
+                <input type="text" class="form-control" id="address" placeholder="Event address" name="address" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="venue" class="col-md-2 control-label">Venue</label>
+              <div class="col-md-10">
+                <select name="venue" id="park" class="form-control" name="venue" required>
+                  <option selected disabled>Indoors or outdoors</option>
+                  <option value="indoors">Indoors</option>
+                  <option value="outdoors">Outdoors</option>
+                </select>
               </div>
             </div>
             <div class="form-group">
               <label for="organization" class="col-md-2 control-label">Organization</label>
               <div class="col-md-10">
-                <input type="text" class="form-control" id="organization" placeholder="Organization name" name="organization" required="">
+                <input type="text" class="form-control" id="organization" placeholder="Organization name" name="organization" required>
               </div>
             </div>
             <div class="form-group">
               <label for="contact" class="col-md-2 control-label">Contact</label>
               <div class="col-md-5">
-                <input type="text" class="form-control" id="contact" placeholder="Primary contact name" name="contactName" required="">
+                <input type="text" class="form-control" id="contact" placeholder="Primary contact name" name="contactName" required>
               </div>
               <div class="col-md-5">
-                <input type="text" class="form-control" data-mask="(999) 999-9999" id="contact" placeholder="Primary contact phone" name="contactNumber" required="">
+                <input type="text" class="form-control" data-mask="(999) 999-9999" id="contact" placeholder="Primary contact phone" name="contactNumber" required>
               </div>
             </div>
           </div>
