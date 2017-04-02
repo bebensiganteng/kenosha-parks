@@ -1,14 +1,18 @@
-const admin = require('firebase-admin')
-const Event = require('../models/event')
+const { database } = require('firebase')
+const { Event } = require('../models')
 
 exports.index = (req, res) => {
-  res.redirect('/dashboard')
+  res.render('dashboard/index')
 }
 
 exports.create = (req, res) => {
   const event = Event(req.body)
-  const eventsRef = admin.database().ref().child('events')
-  eventsRef.set(event)
-  req.flash('message', 'Successfully create event.')
-  res.redirect('/dashboard')
+  database().ref().child('events').push(event)
+    .then(() => {
+      res.status(201).redirect('/dashboard')
+    })
+    .catch((error) => {
+      res.flash('error', error)
+      res.status(500).redirect('/dashboard')
+    })
 }
