@@ -10,7 +10,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "docs": "jsdoc -c ./conf.json -r ./app"
   },
   "dependencies": {
     "body-parser": "^1.17.1",
@@ -27,6 +28,7 @@
     "eslint": "^3.18.0",
     "eslint-config-airbnb-base": "^11.1.2",
     "eslint-plugin-import": "^2.2.0",
+    "jsdoc": "^3.4.3",
     "nodemon": "^1.11.0"
   },
   "eslintConfig": {
