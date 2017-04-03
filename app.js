@@ -6,7 +6,6 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const routes = require('./app/routes')
 const firebase = require('firebase')
-const admin = require('firebase-admin')
 const config = require('./app/config')
 const { isAuthenticated } = require('./app/middleware/auth')
 const { info } = require('console')
@@ -19,7 +18,6 @@ const isDev = app.get('env') === 'development'
  * Configure Firebase.
  */
 firebase.initializeApp(config.firebase.client)
-admin.initializeApp(config.firebase.admin)
 
 
 /**

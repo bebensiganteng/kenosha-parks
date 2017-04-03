@@ -21,7 +21,6 @@
     "express-nunjucks": "^2.2.3",
     "express-session": "^1.15.2",
     "firebase": "^3.7.4",
-    "firebase-admin": "^4.1.4",
     "nunjucks": "^3.0.0"
   },
   "devDependencies": {
