@@ -7,8 +7,8 @@ exports.create = (req, res) => {
   let { name, description } = req.body
 
   // Fix user input
-  const readableName = normalize(name)
-  name = readableName.replace(/ /g, '_')
+  const readableName = capitalize(normalize(name))
+  name = readableName.replace(/ /g, '_').toLowerCase()
   description = `${capitalize(normalize(description))}.`
 
   const topicsRef = database().ref().child('topics')

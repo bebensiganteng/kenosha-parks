@@ -21,3 +21,11 @@ exports.Event = (spec) => {
     startDateTime, endDateTime
   })
 }
+
+exports.createPayload = (spec) => {
+  const { title, body } = spec
+  return Object.freeze({
+    data: {},
+    notification: { title, body }
+  })
+}
