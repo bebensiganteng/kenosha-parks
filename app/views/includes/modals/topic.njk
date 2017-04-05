@@ -1,0 +1,37 @@
+<div class="modal fade" id="topic">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        <h2 class="modal-title text-center">Create Topic</h4>
+      </div>
+        <form action="/topics/create" class="form-horizontal" method="POST">
+          <div class="modal-body">
+          <div class="form-group">
+            <p>Based on the publish/subscribe model, topic messaging allows you to send a message to multiple devices that have opted in to a particular topic. You compose topic messages as needed, and we'll handle routing and delivering the message reliably to the right devices.</p>
+            <div class="alert alert-warning text-center">
+              <p>Only letters allowed. Spaces will be replaced with an underscore.</p>
+              <p>Numbers and special characters will be removed.</p>
+            </div>
+          </div>
+            <div class="form-group">
+              <label for="name" class="col-md-2 control-label">Name</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" id="name" placeholder="Topic name" name="name" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="description" class="col-md-2 control-label">Description</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" id="description" placeholder="Topic description" name="description" required>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button class="btn btn-primary">Create Topic</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>

@@ -3,14 +3,15 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-        <h4 class="modal-title">Create Event</h4>
+        <h2 class="modal-title text-center">Create Push Notification</h2>
       </div>
       <div class="modal-body">
-        ...
+        <p>In order to send push notifications, you will need to use Firebase's Console web application. The Firebase Console offers a robust interface for creating and sending notifications.</p>
+        <p>Before sending notifications, you will need to first create <code>topic</code>. The users of the mobile apps are free to subscribe to the topics of their choosing. By default this application has <code>new_events</code> topic created already for you.</p>
+        <a href="{{notificationConsoleLink}}" target="_blank" class="btn btn-info btn-block">Continue to Firebase Console</a>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancelRedirect">Cancel</button>
       </div>
     </div>
   </div>

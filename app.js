@@ -47,6 +47,7 @@ app.get('/', (req, res) => { res.redirect('/auth/signin') })
 app.use('/auth', routes.auth)
 app.use('/dashboard', isAuthenticated, routes.dashboard)
 app.use('/events', isAuthenticated, routes.events)
+app.use('/topics', isAuthenticated, routes.topics)
 
 app.listen(app.get('port'), () => {
   info(`🚀 App is running on port ${app.get('port')} in ${app.get('env')} mode.`)

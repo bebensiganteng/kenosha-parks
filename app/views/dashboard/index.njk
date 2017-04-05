@@ -3,6 +3,18 @@
 {% block content %}
 <div class="row">
   <div class="col-md-12">
+    {% if messages.error %}
+      <div class="alert alert-danger alert-dismissible text-center">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h3>{{ messages.error}}</h3>
+      </div>
+    {% endif %}
+    {% if messages.success %}
+      <div class="alert alert-success alert-dismissible text-center">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4>{{ messages.success}}</h4>
+      </div>
+    {% endif %}
     <div class="ibox float-e-margins">
       {# Alex Bustos helped with Google Maps. Did not know I had to set a height... #}
       <div class="ibox-content" style="height: 500px;">
