@@ -19,10 +19,10 @@ exports.create = (req, res) => {
       if (!snapshot.exists()) {
         database().ref().child('topics').push(topic)
         req.flash('success', 'Successfully created topic')
-        res.status(201).render('dashboard/index')
+        res.status(201).redirect('/dashboard')
       } else {
         req.flash('error', 'Topic already exists.')
-        res.status(400).render('dashboard/index')
+        res.status(400).redirect('/dashboard')
       }
     })
     .catch((error) => {
