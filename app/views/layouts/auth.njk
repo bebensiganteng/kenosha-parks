@@ -3,7 +3,11 @@
   {% include "../includes/head.njk" %}
   <body class="gray-bg">
     {% block content %}{% endblock %}
-    {% include "../includes/scripts.njk" %}
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/js/inspinia.js"></script>
     {% block scripts %}{% endblock %}
   </body>
 </html>
