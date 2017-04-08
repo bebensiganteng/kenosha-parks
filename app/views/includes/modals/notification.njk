@@ -5,35 +5,20 @@
         <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
         <h2 class="modal-title text-center">Compose Message</h2>
       </div>
-      <form action="/notifications/compose" method="POST">
+      <form action="/notifications/create" method="POST">
         <div class="modal-body">
           <div class="form-group">
-            <label for="message">Message Text</label>
-            <input type="text" class="form-control" id="message" placeholder="Enter message" name="message" required>
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Enter a title" name="title" required>
           </div>
-          <div class="form-group hide">
-            <label for="campaignName">Message Label
-              <small class="text-muted">(optional)</small>
-              <i class="fa fa-question-circle text-muted" data-toggle="tooltip" data-placement="right" title="Name used to identify this message on Firebase. This name isn't shown to users."></i>
-            </label>
-            <input type="text" class="form-control" id="campaignName" placeholder="Enter message nickname" name="campaignName">
-          </div>
-          <div class="form-group hide">
-            <label for="deliveryDate">Delivery date
-              <i class="fa fa-question-circle text-muted" data-toggle="tooltip" data-placement="right" title="When this message should be sent. You can send now or schedule up to one month in advance."></i>
-            </label>
-            <select name="selectedDeliveryType" id="selectedDeliveryType" class="form-control">
-              <option value="now">Send Now</option>
-              <option value="later">Send Later</option>
-            </select>
-          </div>
-          <div class="form-group hide" id="sendLaterDateTime">
-            <input type="text" class="form-control" id="selectedDateTime" placeholder="Select date and time" name="selectedDateTime" required>
+          <div class="form-group">
+            <label for="body">Message Text</label>
+            <input type="text" class="form-control" id="body" placeholder="Enter a message" name="body" required>
           </div>
           <div class="form-group">
             <label for="topic">Topic</label>
             {% if topics.length %}
-              <select name="selectedDeliveryType" id="selectedDeliveryType" class="form-control">
+              <select name="topic" class="form-control" required>
                 <option selected disabled>Select a topic</option>
                 {% for topic in topics %}
                   <option value="{{ topic.name }}">{{ topic.readableName }}</option>
@@ -50,7 +35,7 @@
         </div>
         <div class="modal-footer">
           <button class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button class="btn btn-info">Send Message</button>
+          <button type="submit" class="btn btn-info">Send Message</button>
         </div>
       </form>
     </div>

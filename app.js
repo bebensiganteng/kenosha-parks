@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const routes = require('./app/routes')
 const firebase = require('firebase')
+const admin = require('firebase-admin')
 const config = require('./app/config')
 const { isAuthenticated } = require('./app/middleware/auth')
 const { info } = require('console')
@@ -18,6 +19,7 @@ const isDev = app.get('env') === 'development'
  * Configure Firebase.
  */
 firebase.initializeApp(config.firebase.client)
+admin.initializeApp(config.firebase.admin)
 
 
 /**
@@ -48,6 +50,7 @@ app.use('/auth', routes.auth)
 app.use('/dashboard', isAuthenticated, routes.dashboard)
 app.use('/events', isAuthenticated, routes.events)
 app.use('/topics', isAuthenticated, routes.topics)
+app.use('/notifications', isAuthenticated, routes.notifications)
 
 app.listen(app.get('port'), () => {
   info(`🚀 App is running on port ${app.get('port')} in ${app.get('env')} mode.`)
