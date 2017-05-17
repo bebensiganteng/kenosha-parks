@@ -11,7 +11,8 @@ export const routes = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: DashboardView
+    component: DashboardView,
+    meta: { requiresAuth: true }
   },
   {
     path: '/login',
@@ -21,3 +22,21 @@ export const routes = [
 ]
 
 export const router = new VueRouter({ routes })
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth) {
+    if (!window.localStorage.getItem('user')) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+    } else {
+      // User token exists, check if token is expired.
+
+      // Valid token, attempt login
+      next()
+    }
+  } else {
+    next()
+  }
+})
