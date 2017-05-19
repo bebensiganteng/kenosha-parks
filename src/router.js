@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router'
 import DashboardView from './views/Dashboard.vue'
 import LoginView from './views/Login.vue'
+import store from './store'
 
 export const routes = [
   {
@@ -25,15 +26,17 @@ export const router = new VueRouter({ routes })
 
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
-    if (!window.localStorage.getItem('user')) {
+    // On successfull password/email auth, firebase sets the user in localStorage.
+    // This is an undocumented 'feature' from firebase.
+    const authUser = Object.keys(window.localStorage).filter(item => {
+      return item.startsWith('firebase:authUser')
+    })
+    if (!authUser) {
       next({
         path: '/login',
         query: { redirect: to.fullPath }
       })
     } else {
-      // User token exists, check if token is expired.
-
-      // Valid token, attempt login
       next()
     }
   } else {
