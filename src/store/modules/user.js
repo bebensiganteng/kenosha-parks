@@ -6,7 +6,7 @@ const state = {
   principle: null,
   email: '',
   password: '',
-  loginError: {}
+  loginError: ''
 }
 
 const getters = {
@@ -18,8 +18,8 @@ const getters = {
 const actions = {
   login ({ commit }) {
     auth().signInWithEmailAndPassword(state.email, state.password)
-      .catch(error => {
-        commit(types.LOGIN_ERROR, error)
+      .catch(({ message }) => {
+        commit(types.LOGIN_ERROR, message)
       })
   },
   logout ({ commit }) {
@@ -27,8 +27,8 @@ const actions = {
       .then(() => {
         commit(types.USER_LOGOUT)
       })
-      .catch((error) => {
-        throw error
+      .catch(({ message }) => {
+        commit(types.LOGOUT_ERROR, message)
       })
   }
 }
@@ -36,10 +36,14 @@ const actions = {
 const mutations = {
   [types.USER_LOGIN] (state, user) {
     state.principle = user
+    state.email = ''
+    state.password = ''
+    state.error = null
     router.push({ name: 'dashboard' })
   },
   [types.USER_LOGOUT] (state) {
     state.principle = null
+    state.loginError = null
     router.push({ name: 'login' })
   },
   [types.EMAIL_INPUT_CHANGE] (state, email) {
@@ -48,8 +52,13 @@ const mutations = {
   [types.PASSWORD_INPUT_CHANGE] (state, password) {
     state.password = password
   },
-  [types.LOGIN_ERROR] (state, error) {
-    state.error = error
+  [types.LOGIN_ERROR] (state, message) {
+    state.loginError = message
+    state.email = ''
+    state.password = ''
+  },
+  [types.LOGOUT_ERROR] (state, message) {
+    state.loginError = message
   }
 }
 

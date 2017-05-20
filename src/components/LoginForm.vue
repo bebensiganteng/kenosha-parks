@@ -1,6 +1,7 @@
 <template>
 <form @submit.prevent="login">
   <h2 class="text-center login">{{ title }}</h2>
+  <b-alert variant="danger" dismissible :show="loginError">{{ loginError }}</b-alert>
   <div class="form-group">
     <input v-model.lazy="email" type="email" class="form-control" placeholder="Email" required autoFocus />
   </div>
@@ -42,6 +43,11 @@ export default {
       },
       set (value) {
         this.$store.commit(types.PASSWORD_INPUT_CHANGE, value)
+      }
+    },
+    loginError: {
+      get () {
+        return this.$store.state.user.loginError
       }
     }
   }
