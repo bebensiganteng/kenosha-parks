@@ -36,10 +36,11 @@ const actions = {
 const mutations = {
   [types.USER_LOGIN] (state, user) {
     state.principle = user
-    router.push('/dashboard')
+    router.push({ name: 'dashboard' })
   },
   [types.USER_LOGOUT] (state) {
     state.principle = null
+    router.push({ name: 'login' })
   },
   [types.EMAIL_INPUT_CHANGE] (state, email) {
     state.email = email

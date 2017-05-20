@@ -31,7 +31,7 @@ router.beforeEach((to, from, next) => {
     const authUser = Object.keys(window.localStorage).filter(item => {
       return item.startsWith('firebase:authUser')
     })
-    if (!authUser) {
+    if (!authUser.length) {
       next({
         path: '/login',
         query: { redirect: to.fullPath }
