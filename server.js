@@ -6,17 +6,19 @@ const bodyParser = require('body-parser')
 const { join } = require('path')
 const config = require('./webpack.config')
 const apiRoutes = require('./server/routes/api')
+const opn = require('opn')
 
 const isDev = process.env.NODE_ENV !== 'production'
 const port = isDev ? 3000 : process.env.PORT
 const app = express()
+let devMiddleware
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 if (isDev) {
   const compiler = webpack(config)
-  const devMiddleware = webpackMiddleware(compiler, {
+  devMiddleware = webpackMiddleware(compiler, {
     publicPath: config.output.publicPath,
     noInfo: true
   })
@@ -39,6 +41,18 @@ app.use('/api', apiRoutes)
 // Redirect any invalid requests back to document root with a 404 status
 app.all('*', (req, res) => { res.status(404).redirect('/') })
 
-app.listen(port, () => {
-  console.info(`> Server is running at http://localhost:${port}`)
-})
+// We need to wait until bundle is valid in development
+if (isDev) {
+  devMiddleware.waitUntilValid(startServer)
+} else {
+  startServer()
+}
+
+function startServer () {
+  app.listen(port, () => {
+    console.info(`🚀 Server is running at http://localhost:${port}`)
+    if (isDev) {
+      opn(`http://localhost:${port}`)
+    }
+  })
+}
