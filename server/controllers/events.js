@@ -1,7 +1,3 @@
-exports.all = (req, res) => {
-  res.status(404).json({ message: 'Invalid request.' })
-}
-
 exports.index = (req, res) => {}
 
 exports.create = (req, res) => {}

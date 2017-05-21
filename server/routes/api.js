@@ -1,16 +1,13 @@
 const express = require('express')
-const apiController = require('../controllers/api')
+const eventsRoutes = require('./events')
 
 const router = express.Router()
 
-router.get('/events', apiController.index)
-router.post('/events', apiController.create)
-router.get('/events/:event', apiController.show)
-router.put('/events/:event', apiController.update)
-router.patch('/events/:event', apiController.update)
-router.delete('/events/:event', apiController.destroy)
+router.use('/events', eventsRoutes)
 
 // Handle any invalid requests
-router.all('*', apiController.all)
+router.all('*', (req, res) => {
+  res.status(404).json({ message: 'Invalid request.' })
+})
 
 module.exports = router
