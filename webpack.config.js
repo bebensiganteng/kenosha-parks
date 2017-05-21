@@ -1,11 +1,14 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './src/main.js',
+  entry: [
+    './src/main.js'
+  ],
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    publicPath: '/',
     filename: 'build.js'
   },
   module: {
@@ -74,6 +77,23 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
+    }),
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      inject: 'body',
+      hash: true
+    })
+  ])
+} else {
+  module.exports.entry = (module.exports.entry || []).concat([
+    'webpack-hot-middleware/client?reload=true'
+  ])
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      inject: 'body'
     })
   ])
 }
