@@ -7,11 +7,23 @@ const { join } = require('path')
 const config = require('./webpack.config')
 const apiRoutes = require('./server/routes/api')
 const opn = require('opn')
+const google = require('./server/google-apis')
 
 const isDev = process.env.NODE_ENV !== 'production'
 const port = isDev ? 3000 : process.env.PORT
 const app = express()
 let devMiddleware
+
+// Attempt to authorize the JWT client for Google APIs.
+// For whatever reason the devs do not support promises.
+console.log('Attempting to authorize Google JWT client...')
+google.authorize((err, tokens) => {
+  // Abort since the whole app is based on utilizing Google Calendar.
+  if (err) {
+    throw err
+  }
+  console.log('Successfully authorized Google JWT client.')
+})
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
@@ -43,6 +55,7 @@ app.all('*', (req, res) => { res.status(404).redirect('/') })
 
 // We need to wait until bundle is valid in development
 if (isDev) {
+  console.log('Waiting for webpack to finish...')
   devMiddleware.waitUntilValid(startServer)
 } else {
   startServer()
