@@ -35,9 +35,12 @@ admin.initializeApp({
   databaseURL: 'https://farmers-market-dd671.firebaseio.com/'
 })
 
+// Allows parsing the body content via `req.body`
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
+// If we are in development, then configure webpack dev server
+// and webpack hot reload for client side Vue app.
 if (isDev) {
   const compiler = webpack(config)
   devMiddleware = webpackMiddleware(compiler, {
@@ -49,16 +52,20 @@ if (isDev) {
   app.use(devMiddleware)
   app.use(webpackHotMiddleware(compiler))
 
+  // The webpack dev server bundle is stored in memory,
+  // so we need to write its contents to the response body.
   app.get('/', (req, res) => {
     res.write(fileSystem.readFileSync(join(__dirname, 'dist/index.html')))
     res.end()
   })
 } else {
+  // The `prestart` NPM script will run webpack in production mode
+  // and write the bundle to disk under `dist/`.
   app.use(express.static(join(__dirname, 'dist')))
 }
 
 // Register API routes.
-// All API routes require a valid user JWT from Firebase.
+// All API routes require a valid User JWT from Firebase.
 app.use('/api', requiresToken, apiRoutes)
 
 // Redirect any invalid requests back to document root with a 404 status
