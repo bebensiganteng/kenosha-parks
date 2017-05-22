@@ -11,6 +11,7 @@
     "build": "rimraf dist/ && cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "bootstrap": "4.0.0-alpha.6",
     "bootstrap-vue": "^0.15.8",
