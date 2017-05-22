@@ -17,6 +17,7 @@
     "bootstrap-vue": "^0.15.8",
     "express": "^4.15.3",
     "firebase": "^3.9.0",
+    "firebase-admin": "^5.0.0",
     "googleapis": "^19.0.0",
     "nodemon": "^1.11.0",
     "rimraf": "^2.6.1",

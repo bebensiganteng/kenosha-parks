@@ -8,6 +8,8 @@ const config = require('./webpack.config')
 const apiRoutes = require('./server/routes/api')
 const opn = require('opn')
 const google = require('./server/google-apis')
+const serviceAccount = require('./.firebase/serviceAccount.json')
+const admin = require('firebase-admin')
 
 const isDev = process.env.NODE_ENV !== 'production'
 const port = isDev ? 3000 : process.env.PORT
@@ -23,6 +25,13 @@ google.authorize((err, tokens) => {
     throw err
   }
   console.log('Successfully authorized Google JWT client.')
+})
+
+// Initialize Firebase Admin. Only need to do this once.
+// TODO: Migrate over to client credntials and use environment variables.
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: 'https://farmers-market-dd671.firebaseio.com/'
 })
 
 app.use(bodyParser.urlencoded({ extended: true }))
