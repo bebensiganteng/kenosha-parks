@@ -6,7 +6,7 @@ const state = {
   principle: null,
   email: '',
   password: '',
-  loginError: ''
+  loginError: null
 }
 
 const getters = {
@@ -38,7 +38,7 @@ const mutations = {
     state.principle = user
     state.email = ''
     state.password = ''
-    state.error = null
+    state.loginError = null
     router.push({ name: 'dashboard' })
   },
   [types.USER_LOGOUT] (state) {
