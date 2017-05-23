@@ -24,7 +24,7 @@
 
       </b-nav>    
     </b-collapse>
-    <b-button class="btn-link" href="">Log out</b-button>
+    <b-button class="btn-link" @click="logout">Log out</b-button>
   </b-navbar>
 
 
@@ -258,8 +258,14 @@
 </template>
 
 <script>
-export default {
+import { mapActions } from 'vuex'
 
+export default {
+  methods: {
+    ...mapActions([
+      'logout'
+    ])
+  }
 }
 </script>
 

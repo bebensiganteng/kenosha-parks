@@ -3,7 +3,7 @@
   <div class="row h-50 justify-content-center">
     <div class="col-4 align-self-center card">
       <div class="card-block">
-        <img src="../assets/logo.png" class="mx-auto d-block logo" alt="Logo"/>
+        <img src="../assets/logo.svg" class="mx-auto d-block logo" alt="Logo"/>
         <login-form />
       </div>
     </div>
@@ -28,5 +28,9 @@ export default {
 }
 .container {
   height: 100vh;
+}
+.logo {
+  width: 60%;
+  margin-bottom: 2em;
 }
 </style>
