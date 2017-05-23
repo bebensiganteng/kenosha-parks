@@ -19,6 +19,11 @@ export const routes = [
     path: '/login',
     name: 'login',
     component: LoginView
+  },
+  {
+    path: '*',
+    name: 'error',
+    redirect: { name: 'dashboard' }
   }
 ]
 
