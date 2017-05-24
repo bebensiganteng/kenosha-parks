@@ -66,7 +66,7 @@ if (isDev) {
 
 // Register API routes.
 // All API routes require a valid User JWT from Firebase.
-app.use('/api', apiRoutes)
+app.use('/api', requiresToken, apiRoutes)
 
 // Redirect any invalid requests back to document root with a 404 status
 app.all('*', (req, res) => { res.status(404).redirect('/') })
