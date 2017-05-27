@@ -13,8 +13,6 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
-    "bootstrap": "4.0.0-alpha.6",
-    "bootstrap-vue": "^0.15.8",
     "express": "^4.15.3",
     "firebase": "^3.9.0",
     "firebase-admin": "^5.0.0",
@@ -22,8 +20,8 @@
     "nodemon": "^1.11.0",
     "rimraf": "^2.6.1",
     "vue": "^2.2.1",
-    "vue-material": "^0.7.1",
     "vue-router": "^2.5.3",
+    "vuetify": "^0.12.2",
     "vuex": "^2.3.1",
     "vuex-router-sync": "^4.1.2"
   },
