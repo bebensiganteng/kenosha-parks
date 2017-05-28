@@ -2,19 +2,21 @@
 <v-container>
   <v-layout row>
     <v-flex xs12 md4 offset-md4>
-      <v-card>
-        <v-card-text class="teal text-xs-center">
-          <v-icon light large class="account-circle">account_circle</v-icon>
-          <h4 class="white--text">Please Login</h4>
-        </v-card-text>
-        <v-card-text>
-            <v-text-field v-model="email" name="email" label="Email" type="email" autofocus />
-            <v-text-field v-model="password" label="Password" type="password" name="password" />
-        </v-card-text>
-        <v-card-row actions>
-          <v-btn block large primary light @click.native.stop="login">Login</v-btn>
-        </v-card-row>
-      </v-card>
+      <form @submit.prevent="login">
+        <v-card>
+          <v-card-text class="teal text-xs-center">
+            <v-icon light large class="account-circle">account_circle</v-icon>
+            <h4 class="white--text">Please Login</h4>
+          </v-card-text>
+          <v-card-text>
+              <v-text-field v-model="email" name="email" label="Email" type="email" autofocus />
+              <v-text-field v-model="password" label="Password" type="password" name="password" />
+          </v-card-text>
+          <v-card-row actions>
+            <v-btn block large primary light type="submit">Login</v-btn>
+          </v-card-row>
+        </v-card>
+      </form>
     </v-flex>
   </v-layout>        
 </v-container>
