@@ -4,7 +4,7 @@
       <v-list dense>
         <template v-for="item in items">
           <v-list-item v-if="!item.divider">
-            <v-list-tile :to="item.to ? item.to : null">
+            <v-list-tile :to="item.to">
               <v-list-tile-action>
                 <v-icon>{{ item.icon }}</v-icon>
               </v-list-tile-action>
@@ -53,12 +53,12 @@ export default {
     return {
       drawer: true,
       items: [
-        { icon: 'announcement', text: 'Notifications', to: '/notifications' },
-        { icon: 'event', text: 'Events', to: '/events' },
-        { icon: 'local_florist', text: 'Markets', to: '/markets' },
+        { icon: 'announcement', text: 'Notifications', to: '/#/notifications' },
+        { icon: 'event', text: 'Events', to: '/#/events' },
+        { icon: 'local_florist', text: 'Markets', to: '/#/markets' },
         { divider: true },
-        { icon: 'bug_report', text: 'Report bug', to: '/issues' },
-        { icon: 'info', text: 'Info', to: '/info' }
+        { icon: 'bug_report', text: 'Report bug', to: '/#/issues' },
+        { icon: 'info', text: 'Info', to: '/#/info' }
       ]
     }
   },
