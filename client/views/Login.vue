@@ -1,36 +1,68 @@
 <template>
-<div class="container">
-  <div class="row h-50 justify-content-center">
-    <div class="col-4 align-self-center card">
-      <div class="card-block">
-        <img src="../assets/logo.svg" class="mx-auto d-block logo" alt="Logo"/>
-        <login-form />
-      </div>
-    </div>
-  </div>
-</div>
+<v-container>
+  <v-layout row>
+    <v-flex xs12 md4 offset-md4>
+      <v-card>
+        <v-card-text class="teal text-xs-center">
+          <v-icon light large class="account-circle">account_circle</v-icon>
+          <h4 class="white--text">Please Login</h4>
+        </v-card-text>
+        <v-card-text>
+            <v-text-field v-model="email" name="email" label="Email" type="email" autofocus />
+            <v-text-field v-model="password" label="Password" type="password" name="password" />
+        </v-card-text>
+        <v-card-row actions>
+          <v-btn block large primary light @click.native.stop="login">Login</v-btn>
+        </v-card-row>
+      </v-card>
+    </v-flex>
+  </v-layout>        
+</v-container>
 </template>
 
 <script>
-import LoginForm from '../components/LoginForm.vue'
+import * as types from '../store/mutationTypes'
+import { mapActions } from 'vuex'
+
 export default {
-  components: {
-    LoginForm
+  methods: {
+    ...mapActions([
+      'login'
+    ])
+  },
+  computed: {
+    email: {
+      get () {
+        return this.$store.state.user.email
+      },
+      set (value) {
+        this.$store.commit(types.EMAIL_INPUT_CHANGE, value)
+      }
+    },
+    password: {
+      get () {
+        return this.$store.state.user.password
+      },
+      set (value) {
+        this.$store.commit(types.PASSWORD_INPUT_CHANGE, value)
+      }
+    }
   }
 }
+
 </script>
 
-<style scoped lang="scss">
-.card {
-  border: none;
-  margin-top: 120px;
-  min-width: 380px;
-}
+<style lang="scss" scoped>
 .container {
-  height: 100vh;
+  padding-top: 10%;
 }
-.logo {
-  width: 60%;
-  margin-bottom: 2em;
+.card__row--actions {
+  justify-content: center;
+}
+.icon--large {
+  font-size: 6em;
+}
+h4 {
+  font-size: 1.5em;
 }
 </style>
