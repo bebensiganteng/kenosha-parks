@@ -23,6 +23,7 @@
 <script>
 import * as types from '../store/mutationTypes'
 import { mapActions } from 'vuex'
+import store from '../store'
 
 export default {
   methods: {
@@ -46,6 +47,13 @@ export default {
       set (value) {
         this.$store.commit(types.PASSWORD_INPUT_CHANGE, value)
       }
+    }
+  },
+  beforeRouteEnter (to, from, next) {
+    if (store.getters.authenticated) {
+      next({ name: 'dashboard'})
+    } else {
+      next()
     }
   }
 }
