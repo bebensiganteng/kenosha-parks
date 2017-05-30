@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router'
 import DashboardView from './views/Dashboard.vue'
 import LoginView from './views/Login.vue'
+import NotificationView from './views/Notification.vue'
 import store from './store'
 
 export const routes = [
@@ -19,6 +20,11 @@ export const routes = [
     path: '/login',
     name: 'login',
     component: LoginView
+  },
+  {
+    path: '/notifications',
+    name: 'notification',
+    component: NotificationView
   },
   {
     path: '*',
