@@ -11,7 +11,11 @@ const state = {
 const actions = {
   async sendNotification ({ state, commit, rootState }) {
     try {
-      let response = await axios.post('/api/notification')
+      axios.defaults.headers.common['Authorization'] = `Bearer ${rootState.user.principle.stsTokenManager.accessToken}`
+      let response = await axios.post('/api/notification', {
+        title: state.title,
+        body: state.body
+      })
       commit(types.NOTIFICATION_SUCCESS, response)
     } catch (error) {
       commit(types.NOTIFICATION_ERROR, error)
