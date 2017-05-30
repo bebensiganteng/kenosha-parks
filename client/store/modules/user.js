@@ -10,8 +10,8 @@ const state = {
 }
 
 const getters = {
-  authenticated (state) {
-    return state.principle !== null
+  authenticated ({ principle }) {
+    return state.principle !== null && Object.keys(principle).length !== 0
   }
 }
 
