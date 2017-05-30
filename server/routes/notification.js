@@ -3,6 +3,6 @@ const { notificationController } = require('../controllers')
 
 const router = express.Router()
 
-router.post('/', eventsController.create)
+router.post('/', notificationController.create)
 
 module.exports = router
