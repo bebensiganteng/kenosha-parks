@@ -35,7 +35,7 @@ const actions = {
 
 const mutations = {
   [types.USER_LOGIN] (state, user) {
-    state.principle = Object.assign({}, user)
+    state.principle = user
     state.email = ''
     state.password = ''
     state.loginError = null

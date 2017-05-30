@@ -25,7 +25,13 @@ new Vue({
   render: h => h(App),
   beforeCreate () {
     firebase.auth().onAuthStateChanged(user => {
-      store.commit(USER_LOGIN, user)
+      if (user) {
+        const auth = Object.keys(window.localStorage).filter(item => {
+          return item.startsWith('firebase:authUser')
+        })
+        const authUser = JSON.parse(window.localStorage.getItem(auth[0]))
+        store.commit(USER_LOGIN, authUser)
+      }
     })
   }
 })
