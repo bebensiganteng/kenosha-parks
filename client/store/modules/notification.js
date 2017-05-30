@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const state = {
   title: '',
-  message: '',
+  body: '',
   response: null,
   error: null
 }
@@ -24,7 +24,7 @@ const mutations = {
     state.title = title
   },
   [types.MESSAGE_INPUT_CHANGE] (state, message) {
-    state.message = message
+    state.body = message
   },
   [types.NOTIFICATION_ERROR] (state, error) {
     state.error = error
