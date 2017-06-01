@@ -1,8 +1,8 @@
 export const config = {
-  apiKey: 'AIzaSyAYSljolIQyXohUuSSnmRIUkcZ2UGtS90U',
-  authDomain: 'farmers-market-dd671.firebaseapp.com',
-  databaseURL: 'https://farmers-market-dd671.firebaseio.com',
-  projectId: 'farmers-market-dd671',
-  storageBucket: 'farmers-market-dd671.appspot.com',
-  messagingSenderId: '79631003773'
+  apiKey: 'AIzaSyASjEuv3q0oiGuvV7cOUXylDj_VsWMeJaY',
+  authDomain: 'kenosha-parks.firebaseapp.com',
+  databaseURL: 'https://kenosha-parks.firebaseio.com',
+  projectId: 'kenosha-parks',
+  storageBucket: 'kenosha-parks.appspot.com',
+  messagingSenderId: '649763354644'
 }
