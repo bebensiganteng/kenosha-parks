@@ -1,5 +1,5 @@
 const google = require('googleapis')
-const serviceAccount = require('../.firebase/serviceAccount.json')
+const { serviceAccount } = require('./firebase')
 
 const { client_email, private_key } = serviceAccount
 const scopes = [
