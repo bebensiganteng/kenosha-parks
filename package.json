@@ -2,6 +2,9 @@
   "name": "farmers-market",
   "description": "A Vue.js project",
   "version": "1.0.0",
+  "engines": {
+    "node": "7.x"
+  },
   "author": "ciscoo <cisco21c@gmail.com>",
   "private": true,
   "scripts": {
