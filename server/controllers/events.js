@@ -28,8 +28,8 @@ exports.destroy = ({ body }, res) => {
 
 function createAPIRequest (options, method, res) {
   Promise.fromCallback(cb => events[method](options, cb))
-    .then(({ items }) => {
-      res.json(items)
+    .then((response) => {
+      res.json(response)
     })
     .error(error => {
       res.status(error.code).json({
