@@ -3,7 +3,8 @@
   "description": "A Vue.js project",
   "version": "1.0.0",
   "engines": {
-    "node": "7.x"
+    "node": "7.x",
+    "npm": "4.x"
   },
   "author": "ciscoo <cisco21c@gmail.com>",
   "private": true,
