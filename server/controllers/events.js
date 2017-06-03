@@ -3,7 +3,7 @@ const auth = require('../google-apis')
 const Promise = require('bluebird')
 
 const events = google.calendar('v3').events
-const calendarId = '269m08gnggsctv40qtn2kpclgs@group.calendar.google.com'
+const calendarId = process.env.CALENDAR_ID
 const defaultOptions = { auth, calendarId }
 
 exports.index = (req, res) => {
