@@ -1,6 +1,5 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const { join } = require('path')
 const apiRoutes = require('./routes/api')
 const google = require('./google-apis')
 const requiresToken = require('./middleware/requires-token')
@@ -27,16 +26,12 @@ admin.initializeApp(adminConfig)
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-// The `prestart` NPM script will run webpack in production mode
-// and write the bundle to disk under `dist/`.
-app.use(express.static(join(__dirname, 'dist')))
-
 // Register API routes.
 // All API routes require a valid User JWT from Firebase.
 app.use('/api', requiresToken, apiRoutes)
 
-// Redirect any invalid requests back to document root with a 404 status
-app.all('*', (req, res) => { res.status(404).redirect('/') })
+// No content for anything else as this is just serving an API.
+app.all('*', (req, res) => { res.status(204).send() })
 
 app.listen(port, () => {
   console.info(`🚀 Server is running at http://localhost:${port}`)

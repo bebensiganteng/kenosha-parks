@@ -3,14 +3,13 @@
   "description": "A Vue.js project",
   "version": "1.0.0",
   "engines": {
-    "node": "7.x",
-    "npm": "4.x"
+    "node": ">=7.x",
+    "npm": ">=4.x"
   },
   "author": "ciscoo <cisco21c@gmail.com>",
   "private": true,
   "scripts": {
-    "start": "node ./server/server.prod.js",
-    "prestart": "npm run build",
+    "start": "NODE_ENV=production node ./server/server.prod.js",
     "dev": "node -r dotenv/config ./server/server.dev.js",
     "build": "rimraf dist/ && cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
@@ -22,8 +21,6 @@
     "firebase": "^3.9.0",
     "firebase-admin": "^5.0.0",
     "googleapis": "^19.0.0",
-    "nodemon": "^1.11.0",
-    "rimraf": "^2.6.1",
     "vue": "^2.2.1",
     "vue-router": "^2.5.3",
     "vuetify": "^0.12.2",
@@ -50,6 +47,7 @@
     "html-webpack-plugin": "^2.28.0",
     "node-sass": "^4.5.0",
     "opn": "^5.0.0",
+    "rimraf": "^2.6.1",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.17.0",
     "vue-loader": "^12.0.4",
