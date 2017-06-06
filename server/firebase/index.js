@@ -13,7 +13,11 @@ exports.serviceAccount = {
   client_x509_cert_url: process.env.CLIENT_CERT_URL
 }
 
-exports.credential = credential.cert(exports.serviceAccount)
+exports.credential = credential.cert({
+  projectId: process.env.PROJECT_ID,
+  clientEmail: process.env.CLIENT_EMAIL,
+  privateKey: process.env.PRIVATE_KEY
+})
 
 exports.databaseURL = process.env.DATABASE_URL
 
