@@ -16,7 +16,7 @@ exports.serviceAccount = {
 exports.credential = credential.cert({
   projectId: process.env.PROJECT_ID,
   clientEmail: process.env.CLIENT_EMAIL,
-  privateKey: String(process.env.PRIVATE_KEY)
+  privateKey: '-----BEGIN PRIVATE KEY-----\n' + process.env.RSA_KEY + '\n-----END PRIVATE KEY-----\n'
 })
 
 exports.databaseURL = process.env.DATABASE_URL
