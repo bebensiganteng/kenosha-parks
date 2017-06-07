@@ -14,8 +14,10 @@ exports.create = ({ query }, res) => {
   createAPIRequest(createOptionsFromQuery(query), 'insert', res)
 }
 
-exports.show = ({ query }, res) => {
-  createAPIRequest(createOptionsFromQuery(query), 'get', res)
+exports.show = ({ query, params: eventId }, res) => {
+  let options = createOptionsFromQuery(query)
+  options = Object.assign(options, eventId)
+  createAPIRequest(options, 'get', res)
 }
 
 exports.update = ({ query }, res) => {
