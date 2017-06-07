@@ -1,7 +1,6 @@
 import VueRouter from 'vue-router'
 import LoginView from './views/Login.vue'
 import NotificationView from './views/Notification.vue'
-import store from './store'
 
 export const routes = [
   {

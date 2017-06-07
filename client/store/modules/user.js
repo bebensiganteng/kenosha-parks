@@ -11,7 +11,7 @@ const state = {
 
 const getters = {
   authenticated ({ principle }) {
-    return state.principle !== null && Object.keys(principle).length !== 0
+    return principle !== null && Object.keys(principle).length !== 0
   }
 }
 

@@ -53,10 +53,7 @@ export default {
     return {
       drawer: true,
       items: [
-        { icon: 'announcement', text: 'Notifications', to: '/#/notifications' },
-        { divider: true },
-        { icon: 'bug_report', text: 'Report bug', to: '/#/issues' },
-        { icon: 'info', text: 'Info', to: '/#/info' }
+        { icon: 'announcement', text: 'Notifications', to: '/#/notifications' }
       ]
     }
   },
