@@ -51,7 +51,7 @@ export default {
   },
   data () {
     return {
-      drawer: true,
+      drawer: false,
       items: [
         { icon: 'announcement', text: 'Notifications', to: '/#/notifications' }
       ]
