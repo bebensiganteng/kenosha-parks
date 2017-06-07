@@ -52,8 +52,8 @@ export default {
     }
   },
   beforeRouteEnter (to, from, next) {
-    if (store.getters.authenticated) {
-      next({ name: 'dashboard'})
+    if (window.localStorage.length !== 0) {
+      next({ path: '/notifications'})
     } else {
       next()
     }

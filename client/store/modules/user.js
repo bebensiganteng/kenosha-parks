@@ -39,7 +39,7 @@ const mutations = {
     state.email = ''
     state.password = ''
     state.loginError = null
-    router.push({ name: 'dashboard' })
+    router.push({ name: 'notification' })
   },
   [types.USER_LOGOUT] (state) {
     state.principle = null
