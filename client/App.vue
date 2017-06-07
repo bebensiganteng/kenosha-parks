@@ -19,9 +19,9 @@
         </template>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar v-if="this.$store.getters.authenticated" class="teal">
+    <v-toolbar v-if="this.$store.getters.authenticated" class="teal" light>
       <v-toolbar-side-icon light @click.native.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Kenosha Farmers' Market &mdash; {{ pageTitle }}</v-toolbar-title>
+      <v-toolbar-title>Kenosha Parks</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn light icon @click.native.stop="logout">
         <v-icon>exit_to_app</v-icon>
@@ -35,7 +35,7 @@
       </v-container>
     </main> 
     <v-footer v-if="this.$store.getters.authenticated" class="teal">
-      <span>© 2017</span>
+      <span>Developed by <a href="http://appfactoryuwp.com/" class="kick-back" target="_blank">Parkside App Factory</a></span>
     </v-footer>
   </v-app>
 </template>
@@ -68,6 +68,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.kick-back {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
 </style>
 
