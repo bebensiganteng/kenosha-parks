@@ -28,7 +28,7 @@ app.use(bodyParser.json())
 
 // The `prestart` NPM script will run webpack in production mode
 // and write the bundle to disk under `dist/`.
-app.use(express.static(join(__dirname, 'dist')))
+app.use(express.static(join(__dirname, '../dist')))
 
 // Register API routes.
 app.use('/api', apiRoutes)
