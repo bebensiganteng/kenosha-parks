@@ -6,38 +6,43 @@ const events = google.calendar('v3').events
 const calendarId = process.env.CALENDAR_ID
 const defaultOptions = { auth, calendarId }
 
-exports.index = (req, res) => {
-  createAPIRequest(defaultOptions, 'list', res)
+exports.index = ({ query }, res) => {
+  createAPIRequest(createOptionsFromQuery(query), 'list', res)
 }
 
-exports.create = ({ body }, res) => {
-  createAPIRequest(Object.assign(body, defaultOptions), 'insert', res)
+exports.create = ({ query }, res) => {
+  createAPIRequest(createOptionsFromQuery(query), 'insert', res)
 }
 
-exports.show = ({ body }, res) => {
-  createAPIRequest(Object.assign(body, defaultOptions), 'get', res)
+exports.show = ({ query }, res) => {
+  createAPIRequest(createOptionsFromQuery(query), 'get', res)
 }
 
-exports.update = ({ body }, res) => {
-  createAPIRequest(Object.assign(body, defaultOptions), 'update', res)
+exports.update = ({ query }, res) => {
+  createAPIRequest(createOptionsFromQuery(query), 'update', res)
 }
 
-exports.destroy = ({ body }, res) => {
-  createAPIRequest(Object.assign(body, defaultOptions), 'delete', res)
+exports.destroy = ({ query }, res) => {
+  createAPIRequest(createOptionsFromQuery(query), 'delete', res)
 }
 
-function createAPIRequest (options, method, res) {
-  Promise.fromCallback(cb => events[method](options, cb))
-    .then((response) => {
-      res.json(response)
+function createOptionsFromQuery (query) {
+  let options = Object.assign({}, defaultOptions)
+  options = Object.assign(options, query)
+  return options
+}
+
+async function createAPIRequest (options, method, res) {
+  try {
+    const response = await Promise.fromCallback(cb => events[method](options, cb))
+    res.json(response)
+  } catch (error) {
+    res.status(error.code).json({
+      status: error.code,
+      error: {
+        code: error.errors[0].reason,
+        message: error.errors[0].message
+      }
     })
-    .error(error => {
-      res.status(error.code).json({
-        status: error.code,
-        error: {
-          code: error.errors[0].reason,
-          message: error.errors[0].message
-        }
-      })
-    })
+  }
 }
