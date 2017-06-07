@@ -54,8 +54,6 @@ export default {
       drawer: true,
       items: [
         { icon: 'announcement', text: 'Notifications', to: '/#/notifications' },
-        { icon: 'event', text: 'Events', to: '/#/events' },
-        { icon: 'local_florist', text: 'Markets', to: '/#/markets' },
         { divider: true },
         { icon: 'bug_report', text: 'Report bug', to: '/#/issues' },
         { icon: 'info', text: 'Info', to: '/#/info' }

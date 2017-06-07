@@ -1,5 +1,4 @@
 import VueRouter from 'vue-router'
-import DashboardView from './views/Dashboard.vue'
 import LoginView from './views/Login.vue'
 import NotificationView from './views/Notification.vue'
 import store from './store'
@@ -8,13 +7,7 @@ export const routes = [
   {
     path: '/',
     name: 'index',
-    redirect: { name: 'dashboard' }
-  },
-  {
-    path: '/dashboard',
-    name: 'dashboard',
-    component: DashboardView,
-    meta: { requiresAuth: true }
+    redirect: { name: 'notification' }
   },
   {
     path: '/login',
@@ -24,12 +17,13 @@ export const routes = [
   {
     path: '/notifications',
     name: 'notification',
-    component: NotificationView
+    component: NotificationView,
+    meta: { requiresAuth: true }
   },
   {
     path: '*',
     name: 'error',
-    redirect: { name: 'dashboard' }
+    redirect: { name: 'notification' }
   }
 ]
 
