@@ -12,7 +12,7 @@
     "start": "NODE_ENV=production node ./server/server.prod.js",
     "prestart": "npm run build",
     "dev": "node -r dotenv/config ./server/server.dev.js",
-    "build": "rimraf dist/ NODE_ENV=production webpack --progress --hide-modules"
+    "build": "rimraf dist/ && NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
     "axios": "^0.16.1",
