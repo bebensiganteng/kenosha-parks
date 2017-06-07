@@ -8,7 +8,6 @@ const config = require('../webpack.config')
 const apiRoutes = require('./routes/api')
 const opn = require('opn')
 const google = require('./google-apis')
-const requiresToken = require('./middleware/requires-token')
 const admin = require('firebase-admin')
 const { adminConfig } = require('./firebase')
 
@@ -51,8 +50,7 @@ app.get('/', (req, res) => {
 })
 
 // Register API routes.
-// All API routes require a valid User JWT from Firebase.
-app.use('/api', requiresToken, apiRoutes)
+app.use('/api', apiRoutes)
 
 // Redirect any invalid requests back to document root with a 404 status
 app.all('*', (req, res) => { res.status(404).redirect('/') })

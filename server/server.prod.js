@@ -2,7 +2,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const apiRoutes = require('./routes/api')
 const google = require('./google-apis')
-const requiresToken = require('./middleware/requires-token')
 const admin = require('firebase-admin')
 const adminConfig = require('./firebase')
 
@@ -27,8 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 // Register API routes.
-// All API routes require a valid User JWT from Firebase.
-app.use('/api', requiresToken, apiRoutes)
+app.use('/api', apiRoutes)
 
 // No content for anything else as this is just serving an API.
 app.all('*', (req, res) => { res.status(204).send() })
