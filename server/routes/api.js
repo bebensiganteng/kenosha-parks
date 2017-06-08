@@ -1,11 +1,11 @@
 const express = require('express')
-const eventsRoutes = require('./events')
+const calendarsRoutes = require('./calendars')
 const notificationRoutes = require('./notification')
 const requiresToken = require('../middleware/requires-token')
 
 const router = express.Router()
 
-router.use('/events', eventsRoutes)
+router.use('/calendars', calendarsRoutes)
 router.use('/notification', requiresToken, notificationRoutes)
 
 // Handle any invalid requests
