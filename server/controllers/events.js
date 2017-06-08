@@ -3,34 +3,31 @@ const auth = require('../google-apis')
 const Promise = require('bluebird')
 
 const events = google.calendar('v3').events
-const calendarId = process.env.CALENDAR_ID
-const defaultOptions = { auth, calendarId }
 
-exports.index = ({ query }, res) => {
-  createAPIRequest(createOptionsFromQuery(query), 'list', res)
+exports.index = ({ query, params }, res) => {
+  createAPIRequest(createOptions(query, params.calendarId), 'list', res)
 }
 
-exports.create = ({ query }, res) => {
-  createAPIRequest(createOptionsFromQuery(query), 'insert', res)
+exports.create = ({ query, params }, res) => {
+  createAPIRequest(createOptions(query, params.calendarId), 'insert', res)
 }
 
-exports.show = ({ query, params: eventId }, res) => {
-  let options = createOptionsFromQuery(query)
-  options = Object.assign(options, eventId)
+exports.show = ({ query, params }, res) => {
+  const options = createOptions(query, params.calendarId, { eventId: params.eventId })
   createAPIRequest(options, 'get', res)
 }
 
-exports.update = ({ query }, res) => {
-  createAPIRequest(createOptionsFromQuery(query), 'update', res)
+exports.update = ({ query, params }, res) => {
+  createAPIRequest(createOptions(query, params.calendarId), 'update', res)
 }
 
-exports.destroy = ({ query }, res) => {
-  createAPIRequest(createOptionsFromQuery(query), 'delete', res)
+exports.destroy = ({ query, params }, res) => {
+  createAPIRequest(createOptions(query, params.calendarId), 'delete', res)
 }
 
-function createOptionsFromQuery (query) {
-  let options = Object.assign({}, defaultOptions)
-  options = Object.assign(options, query)
+function createOptions (query, calendarId, props = {}) {
+  let options = Object.assign({ auth, calendarId }, query)
+  options = Object.assign(options, props)
   return options
 }
 
@@ -39,12 +36,6 @@ async function createAPIRequest (options, method, res) {
     const response = await Promise.fromCallback(cb => events[method](options, cb))
     res.json(response)
   } catch (error) {
-    res.status(error.code).json({
-      status: error.code,
-      error: {
-        code: error.errors[0].reason,
-        message: error.errors[0].message
-      }
-    })
+    res.json(error)
   }
 }
