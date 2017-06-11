@@ -60,6 +60,12 @@ async function createAPIRequest (options, method, res) {
     const response = await Promise.fromCallback(cb => events[method](options, cb))
     res.json(response)
   } catch (error) {
-    res.json(error)
+    if (error.hasOwnProperty('code')) {
+      res.status(error.code).json(error)
+    } else if (error.hasOwnProperty('cause')) {
+      res.status(error.cause.code).json(error)
+    } else {
+      res.status(500).json(error)
+    }
   }
 }
