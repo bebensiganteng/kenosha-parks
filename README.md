@@ -1,11 +1,6 @@
 # Kenosha Parks
 
-This project is split into two parts:
-
-* `client/` - A Vue.js app solely responsible for sending push notifications.
-* `server/` - An Express app that exposes an API that wraps around [Google Calendar](https://developers.google.com/apis-explorer/#search/calendar/calendar/v3/)'s API by utilizing [Google APIs Node.js Client](https://github.com/google/google-api-nodejs-client).
-
-The server uses Firebase to send push notifications via the [Firebase Admin SDK](https://firebase.google.com/docs/admin/setup). As a result this project requires a Firebase service account which can be retrieved [here](https://console.firebase.google.com/project/_/settings/serviceaccounts/adminsdk).
+An Express application that exposes an API that wraps around [Google Calendar API](https://developers.google.com/google-apps/calendar/).
 
 # API
 
@@ -14,10 +9,9 @@ Refer to the API doc.
 
 ## Development Setup
 
-Firebase is used to send push notifications and the server exposes an API for the Vue client to `POST` a notification to. In order to use 
 Ensure you have at minimum:
 
-* Node.js >= 7.x
+* Node.js >= 7.6
 
 ``` bash
 # Install dependencies
@@ -26,8 +20,6 @@ npm install
 # If you have Yarn
 yarn
 ```
-
-The dev server uses webpack middleware for hot reloading of the client source.
 
 ### Environment Variables
 
@@ -53,19 +45,10 @@ npm run dev
 yarn dev
 ```
 
+All requests not relating to `/api` will be redirected to City of Kenosha's website.
+
 ## Production
 
-Before deploying, be sure to run the `build` script to bundle the client source:
-
-```bash
-# npm
-npm run build
-
-# Yarn
-yarn build
-```
-
-This is done locally as we don't want to install dev dependencies on the server; waste of space/time.
 
 ### Heroku/Dokku
 
