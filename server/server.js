@@ -3,8 +3,7 @@ const bodyParser = require('body-parser')
 const apiRoutes = require('./routes/api')
 const google = require('./google-apis')
 const admin = require('firebase-admin')
-const adminConfig = require('./firebase')
-const { join } = require('path')
+const { adminConfig } = require('./firebase')
 
 const port = process.env.PORT
 const app = express()
@@ -26,15 +25,13 @@ admin.initializeApp(adminConfig)
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-// The `prestart` NPM script will run webpack in production mode
-// and write the bundle to disk under `dist/`.
-app.use(express.static(join(__dirname, '../dist')))
-
 // Register API routes.
 app.use('/api', apiRoutes)
 
-// Redirect any invalid requests back to document root with a 404 status
-app.all('*', (req, res) => { res.status(404).redirect('/') })
+// Redirect any invalid requests to the City of Kenosha's website
+app.all('*', (req, res) => {
+  res.status(404).redirect('https://www.kenosha.org/')
+})
 
 app.listen(port, () => {
   console.info(`🚀 Server is running at http://localhost:${port}`)

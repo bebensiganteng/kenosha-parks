@@ -1,60 +1,33 @@
 {
   "name": "kenosha-parks",
-  "description": "A Node.js app that exposes an API for Google Calendar for the mobile apps.",
-  "version": "1.0.0",
+  "description": "A Node.js API for Google Calendar for the mobile apps.",
+  "version": "2.0.0",
   "engines": {
-    "node": ">=7.x",
+    "node": ">=7.6",
     "npm": ">=4.x"
   },
   "author": "Francisco Mateo <cisco21c@gmail.com>",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=production node ./server/server.prod.js",
-    "dev": "node -r dotenv/config ./server/server.dev.js",
-    "build": "rimraf dist/ && cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "start": "NODE_ENV=production node ./server/server.js",
+    "dev": "node -r dotenv/config ./server/server.js"
   },
   "dependencies": {
-    "axios": "^0.16.1",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
-    "firebase": "^3.9.0",
     "firebase-admin": "^5.0.0",
-    "googleapis": "^19.0.0",
-    "vue": "^2.2.1",
-    "vue-router": "^2.5.3",
-    "vuetify": "^0.12.2",
-    "vuex": "^2.3.1",
-    "vuex-router-sync": "^4.1.2"
+    "googleapis": "^19.0.0"
   },
   "devDependencies": {
-    "babel-core": "^6.0.0",
-    "babel-loader": "^7.0.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-polyfill": "^6.23.0",
-    "babel-preset-latest": "^6.0.0",
-    "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.0.0",
-    "css-loader": "^0.28.1",
     "dotenv": "^4.0.0",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-node": "^4.2.2",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "file-loader": "^0.11.1",
-    "html-webpack-plugin": "^2.28.0",
-    "node-sass": "^4.5.0",
-    "opn": "^5.0.0",
-    "rimraf": "^2.6.1",
-    "sass-loader": "^6.0.5",
-    "style-loader": "^0.17.0",
-    "vue-loader": "^12.0.4",
-    "vue-template-compiler": "^2.2.1",
-    "webpack": "^2.2.0",
-    "webpack-dev-middleware": "^1.10.2",
-    "webpack-hot-middleware": "^2.18.0"
+    "eslint-plugin-standard": "^3.0.1"
   },
   "eslintConfig": {
     "extends": "standard"
