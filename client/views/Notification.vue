@@ -13,8 +13,8 @@
         <v-card-row>
           <v-container fluid>
             <v-flex xs12>
-              <v-text-field v-model="title" label="Title" single-line />
-              <v-text-field v-model="message" label="Message" single-line />
+              <v-text-field v-model="title" label="Title" single-line></v-text-field>
+              <v-text-field v-model="message" label="Message" single-line></v-text-field>
             </v-flex>
           </v-container>
         </v-card-row>

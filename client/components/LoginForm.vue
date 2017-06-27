@@ -3,10 +3,10 @@
   <h2 class="text-center login">{{ title }}</h2>
   <b-alert variant="danger" dismissible :show="loginError">{{ loginError }}</b-alert>
   <div class="form-group">
-    <input v-model.lazy="email" type="email" class="form-control" placeholder="Email" required autoFocus />
+    <input v-model.lazy="email" type="email" class="form-control" placeholder="Email" required autoFocus>
   </div>
   <div class="form-group">
-    <input v-model.lazy="password" type="password" class="form-control" placeholder="Password" required />                    
+    <input v-model.lazy="password" type="password" class="form-control" placeholder="Password" required>                    
   </div>
   <button class="btn btn-lg btn-primary btn-block" type="submit">{{ loginButtonLabel }}</button>
 </form>

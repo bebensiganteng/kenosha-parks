@@ -2,7 +2,7 @@
   <v-app>
     <v-navigation-drawer v-if="this.$store.getters.authenticated" persistent v-model="drawer" light>
       <v-list dense>
-        <template v-for="item in items">
+        <template v-for="item in items" v-bind:key="item.name">
           <v-list-item v-if="!item.divider">
             <v-list-tile :to="item.to">
               <v-list-tile-action>
@@ -15,7 +15,7 @@
               </v-list-tile-content>
             </v-list-tile>
           </v-list-item>
-          <v-divider dark v-else="item.divider" class="my-4" />
+          <v-divider dark class="my-4"></v-divider>
         </template>
       </v-list>
     </v-navigation-drawer>
@@ -30,7 +30,7 @@
     <main>
       <v-container fluid>
         <transition name="slide">
-          <router-view />
+          <router-view></router-view>
         </transition>
       </v-container>
     </main> 
