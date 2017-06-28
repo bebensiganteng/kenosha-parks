@@ -5,7 +5,6 @@ const google = require('./google-apis')
 const admin = require('firebase-admin')
 const { adminConfig } = require('./firebase')
 
-const port = process.env.PORT
 const app = express()
 
 // Attempt to authorize the JWT client for Google APIs.
@@ -33,6 +32,4 @@ app.all('*', (req, res) => {
   res.status(404).redirect('https://www.kenosha.org/')
 })
 
-app.listen(port, () => {
-  console.info(`🚀 Server is running at http://localhost:${port}`)
-})
+module.exports = app

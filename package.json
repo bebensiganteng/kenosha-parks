@@ -9,12 +9,13 @@
   "author": "Francisco Mateo <cisco21c@gmail.com>",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=production node ./server/server.js",
-    "dev": "node -r dotenv/config ./server/server.js"
+    "start": "NODE_ENV=production node ./bin/www",
+    "dev": "node -r dotenv/config ./bin/www"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
+    "debug": "^2.6.8",
     "express": "^4.15.3",
     "firebase-admin": "^5.0.0",
     "googleapis": "^19.0.0"
