@@ -6,6 +6,17 @@ An Express application that exposes an API that wraps around [Google Calendar AP
 
 Refer to the API doc.
 
+## Google APIs
+
+This project using the following APIs from Google:
+
+* Google Drive API
+* Google Calendar API
+
+These APIs require authentication and you can do this by place the Firebase Admin service account credentials in the `.env`. The Express app will read these credntials, authorize Firebase Admin and the [Google Node.js Client Library](https://github.com/google/google-api-nodejs-client).
+
+You must also enable the above Google APIs through the [developer console](https://console.developers.google.com/apis/dashboard).
+
 
 ## Development Setup
 
@@ -48,7 +59,6 @@ yarn dev
 All requests not relating to `/api` will be redirected to City of Kenosha's website.
 
 ## Production
-
 
 ### Heroku/Dokku
 
